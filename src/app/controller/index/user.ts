@@ -2,8 +2,8 @@ import { provide, controller, inject, post, Context, plugin, config } from "midw
 import { IUserService } from "../../../interfaces";
 
 interface WeappConfig {
-  appid: string;
-  secret: string;
+  appId: string;
+  appSecret: string;
 }
 
 @provide()
@@ -23,15 +23,16 @@ export class UserController {
 
   @post('/login')
   async create(ctx: Context) {
-    const { appid, secret } = this.weappConfig;
-    console.log('appid', appid);
-    console.log('jwtConfig', this.jwtConfig);
+    const { appId: appid, appSecret: secret } = this.weappConfig;
+
     const WX_URL = `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${ctx.request.body.code}&grant_type=authorization_code`;
 
     const res = await ctx.curl(WX_URL, { method: 'GET', dataType: 'json' });
 
+    console.log(res);
+
     if (res.data && res.data.openid) {
-      let user = await this.userService.findByOpenid(res.data.openid);
+      let user = await this.userService.findByOpenid(res.data);
       if (!user) {
         user = await this.userService.create({
           openid: res.data.openid,
@@ -42,7 +43,7 @@ export class UserController {
         id: user.id,
       };
 
-      const token = this.jwt.sign({ user: jwtData }, this.jwtConfig.jwt.secret, { expiresIn: '7d' });
+      const token = this.jwt.sign({ user: jwtData }, this.jwtConfig.secret, { expiresIn: '7d' });
       ctx.success({ token });
     } else {
       ctx.throw(403, { message: res.data.errmsg });

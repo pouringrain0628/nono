@@ -1,12 +1,7 @@
 
-export class IContext {
-  body: {
-    code: number;
-    msg: string;
-    data: any;
-  } | undefined;
+export = {
   success(data: any, msg = 'ok') {
-    this.body = {
+    (this as any).body = {
       code: 200,
       msg,
       data
