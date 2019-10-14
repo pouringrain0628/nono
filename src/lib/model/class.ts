@@ -32,6 +32,14 @@ export class ClassModel extends Model<ClassModel> {
   icon!: string;
 
   @Comment('二级分类')
-  @Column(DataType.JSON)
-  children!: string;
+  @Column(DataType.STRING)
+  set children(value: any) {
+    this.setDataValue('children', value.join(','));
+  }
+
+  get children() {
+    const value = this.getDataValue('children');
+    if (!value) return [];
+    return value.spilt(',');
+  }
 }
