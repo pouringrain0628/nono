@@ -1,13 +1,13 @@
 import { inject, provide } from "midway";
 import { IClassModel } from "../model/class";
-import { IIndexOptions, IClassResult } from "../../class.interfaces";
+import { IIndexOptions, IPagingResult } from "../../class.interfaces";
 
 @provide()
 export class ClassService {
   @inject()
   ClassModel!: IClassModel;
 
-  async index(indexOptions: IIndexOptions): Promise<IClassResult> {
+  async index(indexOptions: IIndexOptions): Promise<IPagingResult> {
     const { pageSize, pageNum } = indexOptions;
     const offset = (pageNum - 1) * pageSize;
 

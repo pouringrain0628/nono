@@ -10,9 +10,11 @@ export interface IIndexOptions {
   pageNum: number;
 }
 
-
-
+export interface IPagingResult {
+  count: number;
+  rows: Array<IClassResult>;
+}
 export interface IClassService {
   index(indexOptions: IIndexOptions): Promise<IClassResult>;
-  show(id: number): Promise<IClassResult>;
+  show(id: number): Promise<IPagingResult>;
 }
