@@ -1,10 +1,6 @@
 import { provide, inject } from "midway";
 import { IUserModel } from "../model/user";
-import { IUserCreateOption, IUserResult } from "../../interfaces";
-
-interface ShowPayload {
-  id: number;
-}
+import { IUserCreateOption, IUserResult, ShowOptions } from "../../user.interfaces";
 
 @provide()
 export class UserService {
@@ -24,7 +20,7 @@ export class UserService {
     });
   }
 
-  async show(showPayload: ShowPayload): Promise<IUserResult> {
+  async show(showPayload: ShowOptions): Promise<IUserResult> {
     return this.UserModel.findByPk(showPayload.id);
   }
 }

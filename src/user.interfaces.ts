@@ -7,7 +7,7 @@ export interface IUserCreateOption {
   openid: string;
 }
 
-export interface ShowPayload {
+export interface ShowOptions {
   id: number;
 }
 
@@ -15,5 +15,5 @@ export interface ShowPayload {
 export interface IUserService {
   create(option: IUserCreateOption): Promise<IUserResult>;
   findByOpenid(options: IUserCreateOption): Promise<IUserResult>;
-  show(showPayload: ShowPayload): Promise<IUserResult>;
+  show(showPayload: ShowOptions): Promise<IUserResult>;
 }

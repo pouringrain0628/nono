@@ -1,5 +1,5 @@
 import { provide, controller, inject, post, Context, plugin, config, get } from "midway";
-import { IUserService } from "../../../interfaces";
+import { IUserService } from "../../../user.interfaces";
 
 interface WeappConfig {
   appId: string;
