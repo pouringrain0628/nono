@@ -51,8 +51,9 @@ export class UserController {
   }
 
   @get('/userInfo')
-  async getUserInfo() {
-
-    return 1;
+  async getUserInfo(ctx: Context) {
+    const userId = ctx.getJwtData().user.id;
+    const userInfo = await this.userService.show({ id: userId });
+    ctx.success(userInfo);
   }
 }
