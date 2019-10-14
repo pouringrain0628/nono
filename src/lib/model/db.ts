@@ -35,11 +35,15 @@ export class DB {
       },
     )
 
+    const modelsArr = [UserModel, ClassModel];
+
     // add models here before using them
-    DB.sequelize.addModels([
-      UserModel,
-      ClassModel
-    ]);
+    DB.sequelize.addModels(modelsArr);
+
+    // 必须在addModels之后才能调用model上的sync方法，因为sync方法要求model必须先调用init,addModel方法内部会调用init
+    modelsArr.forEach(model => {
+      model.sync({ alter: true })
+    });
 
     try {
       await DB.sequelize.authenticate()
