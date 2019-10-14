@@ -34,7 +34,11 @@ export class ClassModel extends Model<ClassModel> {
   @Comment('二级分类')
   @Column(DataType.STRING)
   set children(value: any) {
-    this.setDataValue('children', value.join(','));
+    if (Array.isArray(value)) {
+      this.setDataValue('children', value.join(','));
+    } else if (value !== '') {
+      throw new Error('children字段不能为非数组');
+    }
   }
 
   get children() {
