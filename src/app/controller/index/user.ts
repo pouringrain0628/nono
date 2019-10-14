@@ -1,4 +1,4 @@
-import { provide, controller, inject, post, Context, plugin, config } from "midway";
+import { provide, controller, inject, post, Context, plugin, config, get } from "midway";
 import { IUserService } from "../../../interfaces";
 
 interface WeappConfig {
@@ -48,5 +48,11 @@ export class UserController {
     } else {
       ctx.throw(403, { message: res.data.errmsg });
     }
+  }
+
+  @get('/userInfo')
+  async getUserInfo() {
+
+    return 1;
   }
 }

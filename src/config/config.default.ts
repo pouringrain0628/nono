@@ -11,7 +11,19 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1570701942001_3477'
 
   // add your config here
-  config.middleware = []
+  config.middleware = ['errorHandler', 'auth']
+
+  config.auth = {
+    enable: true,
+    match(ctx: any) {
+      const url = ctx.url.split('?')[0];
+      console.log(url);
+      const whiteList = [`index/login`, `index/userInfo`];
+      return !whiteList.find(val => {
+        return (new RegExp(val + '$')).test(url);
+      });
+    },
+  }
 
   config.security = {
     csrf: false
