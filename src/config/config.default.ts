@@ -29,13 +29,27 @@ export default (appInfo: EggAppInfo) => {
     csrf: false
   }
 
+  // config.sequelize = {
+  //   dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+  //   database: 'gold',
+  //   host: '192.168.50.131',
+  //   port: '3306',
+  //   username: 'root',
+  //   password: 'YiyunSql@ubuntu',
+  //   dialectOptions: {
+  //     charset: 'utf8mb4_unicode_ci',
+  //   },
+  //   timezone: '+08:00',
+  //   logging: false,
+  // }
+
   config.sequelize = {
     dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
     database: 'gold',
-    host: '192.168.50.131',
+    host: 'localhost',
     port: '3306',
     username: 'root',
-    password: 'YiyunSql@ubuntu',
+    password: 'dai960513',
     dialectOptions: {
       charset: 'utf8mb4_unicode_ci',
     },

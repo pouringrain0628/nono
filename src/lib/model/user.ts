@@ -15,6 +15,7 @@ export type IUserModel = typeof UserModel;
 @Table({
   freezeTableName: true,
   tableName: 'Users',
+  timestamps: true,
 })
 export class UserModel extends Model<UserModel> {
   @Column({

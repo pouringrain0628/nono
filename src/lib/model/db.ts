@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript'
 import { provide, scope, ScopeEnum } from 'midway'
 import { UserModel } from './user';
+import { ClassModel } from './class';
 
 interface ISequelizeConfig {
   host: string
@@ -37,6 +38,7 @@ export class DB {
     // add models here before using them
     DB.sequelize.addModels([
       UserModel,
+      ClassModel
     ]);
 
     try {
