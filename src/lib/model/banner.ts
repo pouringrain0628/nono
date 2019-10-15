@@ -1,5 +1,16 @@
 import { Model, Table, Comment, Column, DataType, BelongsTo, ForeignKey, Default } from 'sequelize-typescript';
 import { GoodsModel } from './goods'
+import { providerWrapper } from 'midway';
+
+export const factory = () => BannerModel;
+providerWrapper([
+  {
+    id: 'BannerModel',
+    provider: factory,
+  }
+])
+
+export type IBannerModel = typeof BannerModel;
 
 @Table({
   freezeTableName: true,
