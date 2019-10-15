@@ -4,6 +4,8 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "bcryptjs": "^2.4.3",
     "egg-jwt": "^3.1.6",
     "egg-scripts": "^2.10.0",
     "midway": "^1.0.0",
