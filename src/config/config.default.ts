@@ -25,6 +25,12 @@ export default (appInfo: EggAppInfo) => {
     },
   }
 
+  config.qiniu = {
+    bucket: 'testimg',
+    accessKey: '5wJokfZBh2PNKBijtCrbb1I-Fz5KiGutzdUcgu5y',
+    secretKey: 'tedrfLeCbwAYdEFnpYMqgRafFs5d1cYfa2raV7OG',
+  }
+
   config.security = {
     csrf: false
   }

@@ -10,6 +10,7 @@
     "egg-scripts": "^2.10.0",
     "midway": "^1.0.0",
     "mysql2": "^1.7.0",
+    "qiniu": "^7.2.2",
     "sequelize": "^5.19.5",
     "sequelize-typescript": "^1.0.0"
   },
