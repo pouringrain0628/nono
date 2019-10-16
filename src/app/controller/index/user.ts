@@ -29,8 +29,6 @@ export class UserController {
 
     const res = await ctx.curl(WX_URL, { method: 'GET', dataType: 'json' });
 
-    console.log(res);
-
     if (res.data && res.data.openid) {
       let user = await this.userService.findByOpenid(res.data);
       if (!user) {
@@ -44,10 +42,18 @@ export class UserController {
       };
 
       const token = this.jwt.sign({ user: jwtData }, this.jwtConfig.secret, { expiresIn: '7d' });
+
       ctx.success({ token });
     } else {
       ctx.throw(403, { message: res.data.errmsg });
     }
+  }
+
+  @get('/test')
+  async index(ctx: Context) {
+    const userId = ctx.getJwtData().user.id;
+    const userInfo = await this.userService.show({ id: userId });
+    ctx.success(userInfo);
   }
 
   @get('/userInfo')
@@ -56,4 +62,5 @@ export class UserController {
     const userInfo = await this.userService.show({ id: userId });
     ctx.success(userInfo);
   }
+
 }

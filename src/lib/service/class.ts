@@ -8,13 +8,13 @@ export class ClassService {
   ClassModel!: IClassModel;
 
   async index(indexOptions: IIndexOptions): Promise<IPagingResult> {
-    const { pageSize, pageNum } = indexOptions;
+    const { pageSize = 10, pageNum = 1 } = indexOptions;
     const offset = (pageNum - 1) * pageSize;
-
     return this.ClassModel.findAndCountAll({
       offset,
       limit: pageSize,
-    })
+      logging: true,
+    });
   }
 
   async show(id: number) {

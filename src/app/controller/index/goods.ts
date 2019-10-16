@@ -10,8 +10,8 @@ export class GoodsController {
   @get('/')
   async index(ctx: any) {
     const payload = ctx.query;
-    payload.isOnline = true;
-    const goodsList = await this.goodsService.index(payload);
+    const { pageSize = 10, pageNum = 1 } = payload;
+    const goodsList = await this.goodsService.index({ pageSize, pageNum, isOnline: true });
     ctx.success(goodsList);
   }
 

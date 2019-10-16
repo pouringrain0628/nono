@@ -9,11 +9,10 @@ export = {
   },
 
   getJwtData() {
-    const that = (this as any);
-    const { app } = that;
-    const bearerToken = that.request.header.authorization;
+    const app = (this as any).app;
+    const bearerToken = (this as any).request.header.authorization;
 
-    const token = bearerToken.replace('bearer ', '');
+    const token = bearerToken.replace('Bearer ', '');
     return app.jwt.decode(token, app.config.jwt.secret);
   }
 }

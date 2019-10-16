@@ -7,8 +7,6 @@ function getToken(ctx: Context): string {
 
 export default function(options: any, app: any) {
   console.log('options:', options);
-  console.log('app:', app);
-
   return async (ctx: Context, next: any) => {
     const token: string = getToken(ctx);
     if (!token) {

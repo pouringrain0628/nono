@@ -8,7 +8,7 @@ export class GoodsService {
   private GoodsModel!: IGoodsModel;
 
   async index(indexOptions: IIndexOptions) {
-    const { pageNum, pageSize } = indexOptions;
+    const { pageNum = 1, pageSize = 10 } = indexOptions;
     const offset = (pageNum - 1) * pageSize;
     return this.GoodsModel.findAndCountAll({
       offset,

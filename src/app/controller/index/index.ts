@@ -1,33 +1,40 @@
-import { provide, inject, controller, Context, get } from "midway";
+import { provide, inject, controller, } from "midway";
 import { IBannerService } from "../../../banner.interfaces";
 import { IClassService } from "../../../class.interfaces";
 
 @provide()
-@controller('/api/index/index')
+@controller('/api/index')
 export class IndexController {
-  @inject()
-  ctx!: Context;
-
   @inject()
   bannerService!: IBannerService;
 
   @inject()
   classService!: IClassService;
 
-  @get()
-  async index() {
-    const options = this.ctx.query;
+  // @get('/index')
+  // async index(ctx: Context) {
+  //   // const options = ctx.query;
+  //   // const { pageSize = 10, pageNum = 1 } = options;
 
-    const promiseArr: Array<Promise<any>> = [];
+  //   // const promiseArr: Array<Promise<any>> = [];
 
-    promiseArr.push(this.classService.index(options));
-    promiseArr.push(this.bannerService.index(options));
+  //   // promiseArr.push(this.classService.index({ pageSize, pageNum }));
+  //   // promiseArr.push(this.bannerService.index({ pageSize, pageNum }));
+  //   let banners = null;
+  //   let classes = null;
 
-    const [banners, classes] = await Promise.all(promiseArr);
+  //   // try {
+  //   //   [banners, classes] = await Promise.all(promiseArr);
+  //   // } catch (error) {
+  //   //   ctx.throw(500, error.msg)
+  //   // }
 
-    this.ctx.success({
-      banners,
-      classes
-    })
-  }
+  //   console.log(banners, '123');
+  //   console.log(classes);
+
+  //   ctx.success({
+  //     banners,
+  //     classes
+  //   });
+  // }
 }
