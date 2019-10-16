@@ -25,29 +25,10 @@ export default (appInfo: EggAppInfo) => {
     },
   }
 
-  config.qiniu = {
-    bucket: 'testimg',
-    accessKey: '5wJokfZBh2PNKBijtCrbb1I-Fz5KiGutzdUcgu5y',
-    secretKey: 'tedrfLeCbwAYdEFnpYMqgRafFs5d1cYfa2raV7OG',
-  }
-
   config.security = {
     csrf: false
   }
 
-  // config.sequelize = {
-  //   dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
-  //   database: 'gold',
-  //   host: '192.168.50.131',
-  //   port: '3306',
-  //   username: 'root',
-  //   password: 'YiyunSql@ubuntu',
-  //   dialectOptions: {
-  //     charset: 'utf8mb4_unicode_ci',
-  //   },
-  //   timezone: '+08:00',
-  //   logging: false,
-  // }
 
   config.sequelize = {
     dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
@@ -64,8 +45,8 @@ export default (appInfo: EggAppInfo) => {
   }
 
   config.weapp = {
-    appId: 'wxf222bff5591b5b8f',
-    appSecret: 'aa7e894ccc0c748062af3b7e948c0835',
+    appId: '',
+    appSecret: '',
   }
 
   config.jwt = {

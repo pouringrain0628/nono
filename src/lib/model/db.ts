@@ -1,11 +1,6 @@
 import { Sequelize } from 'sequelize-typescript'
 import { provide, scope, ScopeEnum } from 'midway'
 import { UserModel } from './user';
-import { ClassModel } from './class';
-import { BannerModel } from './banner';
-import { AdminModel } from './admin';
-import { GoodsModel } from './goods';
-
 interface ISequelizeConfig {
   host: string
   port: number
@@ -38,7 +33,7 @@ export class DB {
       },
     )
 
-    const modelsArr = [UserModel, ClassModel, GoodsModel, BannerModel, AdminModel];
+    const modelsArr = [UserModel];
 
     // add models here before using them
     DB.sequelize.addModels(modelsArr);
